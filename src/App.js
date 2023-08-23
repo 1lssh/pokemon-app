@@ -15,7 +15,6 @@ function App() {
 			pokemons.push(response.data)
 		}
 		setPokemons(pokemons)
-		setCurrentItem(pokemons[0])
 	}
 
 	useEffect(() => {
@@ -42,9 +41,9 @@ function App() {
 						})
 					}
 				</div>
-				<div className='pokemon__info'>
-					{
-						currentItem &&
+				{
+					currentItem &&
+					<div className='pokemon__info'>
 						<div>
 							<h1 className='pokemon__title'>{currentItem.name}</h1>
 							<div className='pokemon__img'>
@@ -55,8 +54,9 @@ function App() {
 							<div className='pokemon__description'>weight: {currentItem.weight}</div>
 							<div className='pokemon__description'>attack: {currentItem.stats[1].base_stat}</div>
 						</div>
-					}
-				</div>
+
+					</div>
+				}
 			</div >
 		</div>
 
