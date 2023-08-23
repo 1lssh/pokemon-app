@@ -6,7 +6,7 @@ import { Chip } from '@mui/material';
 
 function App() {
 	const [pokemons, setPokemons] = useState()
-	const [toggleTab, setToggleTab] = useState()
+	const [currentItem, setCurrentItem] = useState()
 
 	const getPokemons = async () => {
 		const pokemons = []
@@ -15,7 +15,7 @@ function App() {
 			pokemons.push(response.data)
 		}
 		setPokemons(pokemons)
-		setToggleTab(pokemons[0])
+		setCurrentItem(pokemons[0])
 	}
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ function App() {
 								<div
 									className='pokemon__option'
 									key={pokemon.id}
-									onClick={() => setToggleTab(pokemon)}
+									onClick={() => setCurrentItem(pokemon)}
 								>
 									<Chip color="info" label={pokemon.name} />
 								</div>
@@ -44,16 +44,16 @@ function App() {
 				</div>
 				<div className='pokemon__info'>
 					{
-						toggleTab &&
+						currentItem &&
 						<div>
-							<h1 className='pokemon__title'>{toggleTab.name}</h1>
+							<h1 className='pokemon__title'>{currentItem.name}</h1>
 							<div className='pokemon__img'>
-								<img src={toggleTab.sprites.front_default} alt='' />
+								<img src={currentItem.sprites.front_default} alt='' />
 							</div>
-							<div className='pokemon__description'>id: {toggleTab.id}</div>
-							<div className='pokemon__description'>heigth: {toggleTab.height}</div>
-							<div className='pokemon__description'>weight: {toggleTab.weight}</div>
-							<div className='pokemon__description'>attack: {toggleTab.stats[1].base_stat}</div>
+							<div className='pokemon__description'>id: {currentItem.id}</div>
+							<div className='pokemon__description'>heigth: {currentItem.height}</div>
+							<div className='pokemon__description'>weight: {currentItem.weight}</div>
+							<div className='pokemon__description'>attack: {currentItem.stats[1].base_stat}</div>
 						</div>
 					}
 				</div>
